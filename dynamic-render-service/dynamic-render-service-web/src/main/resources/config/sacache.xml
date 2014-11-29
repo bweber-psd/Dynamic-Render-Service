@@ -1,0 +1,103 @@
+<caches>
+	<!-- 
+	Cache configuration parameters:
+  		
+	* name="default"
+		name - unique name of the cache
+		The name is used by the application to instantiate the cache. If the name is changed, the application wont
+		be able to instantiate the cache any more.
+  		
+	* start="true" 
+		if not true, cache will not start
+  		
+	* maxElementCount="10000" 
+		The maximum objects count to be held in the cache.
+		It is mandatory to use the parameter thresholdElementCount (see below), otherwise the maxElementCount does not work.
+		Each time a new object is put to the cache, the current object count is checked against the maxElementCount value,
+		and if higher, the count of element will be shrink down to the threshholdElementCount value.
+  		 
+	* thresholdElementCount="500"   
+		If the Cache element count exceeds, the cache will be shrink down to the element count of this value.
+		Necessary to use with parameter maxElementCount.
+    	
+	* maxCacheSize="10485760"
+		The maximum cache size in bytes to be held in the cache.
+		It is mandatory to use the parameter thresholdCacheSize (see below), otherwise the maxCacheSize does not work.
+		Each time a new object is put to the cache, the current cache size is checked against the maxCacheSize value,
+		and if higher, the cache size will be shrink down to the thresholdCacheSize value. 
+    		
+		Cache size examples:
+		10485760 - 10MB
+		104857600 - 100MB
+		1073741824 - 1GB
+		107374182400 - 100GB
+		1073741824000 - 1TB
+    	
+	* thresholdCacheSize="5242880"
+		If the Cache size exceeds, the cache will be shrink down to the size in bytes of this value.
+		Necessary to use with parameter maxElementCount. 
+      
+	* eternal="false"  
+		Sets whether elements are eternal. If set to true the expiration thread will never start, 
+		If eternal, expiration timeouts are ignored and the elements in the cache never expire.
+	
+	* persist="true"  
+		Set to true to persist the cache to disk between JVM restarts. The cache elements are stored to the storePath (see below).
+    
+	* expireTimeSeconds="120"
+		Sets the time to idle for an element before it expires.
+		If a element is set to expired, it will be removed by the next expireThread start.
+		Is only used if the element is not eternal.
+       
+	* expireThreadIntervalSeconds="120"
+		The interval in seconds between runs of the expire thread.
+		The thread removes all elements which are expired by the expireTimeSeconds value.
+		Is only used if the element is not eternal.
+        
+	* evictionPolicy="LRU"
+		Sets the eviction policy. An invalid argument will set it to LRU.
+		Possible policy is one of "LRU", "LFU" or "FIFO".
+		The policy is always used when a element is removed by the cache system.
+        
+	* statistic="false"
+		If set to true, cache statistic is print out every 10 seconds to the logfile. 
+        
+	* storePath="cachestore"
+		The path where the cache store is located on disk for persistence.
+		Default path name is "cachestore". If parameter "persist" is true, the cache will be
+		stored into this path. In case of File or Document cache the file streams are stored 
+		in this path under the name of the cache.
+		
+	* jmxManaged="false"
+		If set to true, each cache will register a MBean with it's name in the JVMs management
+		bean server. The MBean provides monitoring and management functions that can be used
+		in any JMX tool like JConsole or JVisualVM.
+        
+	* cacheDecoratorFactory class="com.saperion.cache.DefaultCacheFactory"
+		Determinates the cache factory which creates the needed cache for this configuration.
+		The factory must extend the abstract factory com.saperion.cache.CacheFactory.
+		Following factories are available by defaut:
+		
+		
+	-->
+	
+	<!-- Default Cache  -->		 
+	<cache name="RenderServiceCache"
+		start="true"
+		maxElementCount="100000"
+		thresholdElementCount="50000"
+		maxCacheSize="1073741824"
+		thresholdCacheSize="536870912"
+		eternal="true"
+		expireTimeSeconds="120"
+		expireThreadIntervalSeconds="120"
+		evictionPolicy="LRU"
+		statistic="false"
+		storePath="./cachestore"
+		jmxManaged="true"
+		persist="true"
+		encrypt="true">
+		<cacheDecoratorFactory class="com.perceptivesoftware.renderservice.cache.RenderServiceCacheFactory" />
+	</cache>
+
+</caches>

@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>SAPERION Render Service documentation</title>
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
+</head>
+<body>
+	<h1>SAPERION Render Service documentation</h1>
+	
+	<h2>/renderservice/webapi/version</h2>
+	<p>Displays the version of the service.</p>
+	<p>Produces: text/plain</p>
+	<p>Method: GET</p>
+	
+	<h2>/renderservice/webapi/formats/sources</h2>
+	<p>Returns the supported source-formats as array of JSON representations of com.saperion.connector.formats.serializable.SerializableSourceFormat.</p>
+	<p>Produces: application/json</p>
+	<p>Method: GET</p>
+	
+	<h2>/renderservice/webapi/formats/targets</h2>
+	<p>Returns the supported target-formats as array of JSON representations of com.saperion.connector.formats.serializable.SerializableTargetFormat.</p>
+	<p>Produces: application/json</p>
+	<p>Method: GET</p>
+	
+	<h2>/renderservice/webapi/rendition/&lt;format&gt;</h2>
+	<p>Renders to the specified format (e.g. 'pdf' or 'png').</p>
+	<p>Accepts: multipart/form-data</p>
+	<p>Produces: depends on the specified format</p>
+	<p>Method: POST</p>
+	
+	<table border="1">
+		<tr>
+			<th>Parameter</th>
+			<th>Type</th>
+			<th>Explanation</th>
+			<th>Optional</th>
+			<th>Default</th>
+		</tr>
+		<tr>
+			<td>timeout</td>
+			<td>int</td>
+			<td>Max time to wait for rendition</td>
+			<td>yes</td>
+			<td>10 (configurable)</td>
+		</tr>
+		<tr>
+			<td>dpi</td>
+			<td>int</td>
+			<td>Resolution of rendition</td>
+			<td>yes</td>
+			<td>200 (configurable)</td>
+		</tr>
+		<tr>
+			<td>page</td>
+			<td>int</td>
+			<td>Page to render</td>
+			<td>yes</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<td>height</td>
+			<td>int</td>
+			<td>Height of rendition in pixels.</td>
+			<td>yes</td>
+			<td>-1 (auto)</td>
+		</tr>
+		<tr>
+			<td>width</td>
+			<td>int</td>
+			<td>Width of rendition in pixels</td>
+			<td>yes</td>
+			<td>-1 (auto)</td>
+		</tr>
+		<tr>
+			<td>file</td>
+			<td>file</td>
+			<td>Content to render</td>
+			<td>no</td>
+			<td></td>
+		</tr>
+	</table>
+	
+	<h2>Returncodes in case of an error</h2>
+	<h3>400</h3>
+	<ul>
+		<li> Request contained an invalid parameter.
+	</ul>
+	<h3>413</h3> 
+	<ul>
+		<li> Returned when the document posted in the request is larger than the configured maximum size.
+	</ul>
+	<h3>500</h3>
+	<ul>
+		<li> Render thread was aborted with an exception.
+		<li> I/O error when rendering.
+		<li> Rendering failed because of an unsupported document or another error in the engine.
+		<li> Timeout when waiting for the result of a render-thread.
+		<li> Generic internal errors.
+	</ul>
+</body>
+</html>
