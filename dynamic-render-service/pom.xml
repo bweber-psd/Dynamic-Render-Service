@@ -17,6 +17,7 @@
 	<modules>
 		<module>dynamic-render-service-bundle</module>
 		<module>dynamic-render-service-web</module>
+		<module>dynamic-render-service-webapp</module>
 	</modules>
 
 	<build>

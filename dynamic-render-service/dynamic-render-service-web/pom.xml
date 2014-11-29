@@ -59,7 +59,7 @@
 			<artifactId>jersey-media-json-jackson</artifactId>
 		</dependency>
 
-		<!-- Saperion -->
+		<!-- Saperion
 		<dependency>
 			<groupId>com.saperion.common.lang</groupId>
 			<artifactId>saperion-common-lang</artifactId>
@@ -82,6 +82,15 @@
 			<artifactId>sacache</artifactId>
 			<version>2.2.0</version>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>com.saperion.common.test</groupId>
+			<artifactId>saperion-common-test</artifactId>
+			<version>${saperion.common.version}</version>
+			<scope>test</scope>
+		</dependency>
+		 -->
 
 		<!-- OSGi -->
 		<dependency>
@@ -124,12 +133,6 @@
 			<artifactId>jersey-test-framework-provider-external</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.saperion.common.test</groupId>
-			<artifactId>saperion-common-test</artifactId>
-			<version>${saperion.common.version}</version>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
