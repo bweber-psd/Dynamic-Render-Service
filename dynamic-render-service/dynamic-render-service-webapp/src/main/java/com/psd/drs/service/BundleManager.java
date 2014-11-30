@@ -31,17 +31,12 @@ public class BundleManager {
 	
 	public List<String> getAllBundles() {
 		Bundle[] bundles = context.getBundles();
-		Collection<ServiceReference<Activator>> bundleContext = null;
 		try {
 			ServiceReference<?> serviceReference = context.getServiceReference(RenderService.class.getName());
 			if (serviceReference != null) {
 				log.info("Service reference: " + serviceReference.getBundle().getSymbolicName());
 			}
-			if (bundleContext != null && !bundleContext.isEmpty()) {
-				String bundleName = bundleContext.iterator().next().getBundle().getSymbolicName();
-				log.info("Consumer Bundle: " + bundleName);
-				return Collections.singletonList(bundleContext.iterator().next().getBundle().getSymbolicName());
-			}
+			
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +44,8 @@ public class BundleManager {
 		List<String> bundleNames = new ArrayList<String>();
 		for (Bundle bundle : bundles) {
 			bundleNames.add(bundle.getSymbolicName());
-			log.info("Bundle: " + bundle.getBundleContext());
+			log.info("Bundle: " + bundle + " " + bundle.getRegisteredServices() + " " + bundle.getLocation());
+			
 		}
 		return bundleNames;
 	}

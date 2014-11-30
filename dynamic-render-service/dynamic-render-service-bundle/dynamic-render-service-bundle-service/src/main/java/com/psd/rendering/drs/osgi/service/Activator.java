@@ -1,5 +1,7 @@
 package com.psd.rendering.drs.osgi.service;
 
+import java.util.Properties;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -11,7 +13,8 @@ public class Activator implements BundleActivator {
 
     @Override
     public void start(BundleContext context) throws Exception {
-        reg = context.registerService(RenderService.class.getName(), new RenderServiceImpl(), null);
+        reg = context.registerService(RenderService.class.getName(), new RenderServiceImpl(), new Properties());
+        System.out.println("Registration: " + reg.toString());
     }
 
     @Override
