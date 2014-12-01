@@ -5,8 +5,8 @@
 		<groupId>com.saperion</groupId>
 		<artifactId>global</artifactId>
 		<version>3</version>
-	</parent> -->
-
+	</parent>
+ -->
 	<groupId>com.psd.rendering.drs</groupId>
 	<artifactId>dynamic-render-service</artifactId>
 	<version>1.0.0-SNAPSHOT</version>

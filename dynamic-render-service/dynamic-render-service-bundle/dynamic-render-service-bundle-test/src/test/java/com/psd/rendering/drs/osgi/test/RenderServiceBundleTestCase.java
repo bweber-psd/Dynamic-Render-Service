@@ -30,7 +30,7 @@ public class RenderServiceBundleTestCase {
 
     @Test
     public void getHelloService() {
-        ServiceReference<?> ref = ctx.getServiceReference(RenderService.class.getName());
+        ServiceReference ref = ctx.getServiceReference(RenderService.class.getName());
         RenderService svc = (RenderService) ctx.getService(ref);
 
         Assert.assertEquals("This service implementation should reverse the input",

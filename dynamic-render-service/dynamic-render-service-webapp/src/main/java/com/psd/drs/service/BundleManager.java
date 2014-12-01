@@ -1,8 +1,6 @@
 package com.psd.drs.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -12,11 +10,10 @@ import javax.inject.Inject;
 
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 
 import com.psd.rendering.drs.osgi.api.RenderService;
-import com.psd.rendering.drs.osgi.consumer.Activator;
+import com.psd.rendering.drs.osgi.api.RenderServiceTracker;
 
 @Stateless
 public class BundleManager {
@@ -49,5 +46,14 @@ public class BundleManager {
 		}
 		return bundleNames;
 	}
+	
+	public RenderService getRenderService() {
+		ServiceReference<RenderServiceTracker> serviceReference = (ServiceReference<RenderServiceTracker>) context.getServiceReference(RenderServiceTracker.class.getName());
+		Object obj = context.getService(serviceReference);
+		return context.getService(serviceReference).getService(null);
+	//	RenderServiceTracker serviceTracker = (RenderServiceTracker) context.getService(serviceReference).getService(null);
+	//	return serviceTracker.getService(null);
+	}
+	
 
 }

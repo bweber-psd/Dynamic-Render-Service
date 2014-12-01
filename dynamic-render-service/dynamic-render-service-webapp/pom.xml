@@ -141,15 +141,13 @@
 		</dependency>
 
 
-		<dependency>
-			<groupId>com.psd.rendering.drs</groupId>
-			<version>1.0.0-SNAPSHOT</version>
-			<artifactId>dynamic-render-service-bundle-consumer</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>com.psd.rendering.drs</groupId> <version>1.0.0-SNAPSHOT</version> 
+			<artifactId>dynamic-render-service-bundle-consumer</artifactId> </dependency> -->
 		<dependency>
 			<groupId>com.psd.rendering.drs</groupId>
 			<version>1.0.0-SNAPSHOT</version>
 			<artifactId>dynamic-render-service-bundle-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 
@@ -174,6 +172,11 @@
 				<configuration>
 					<!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<archive>
+						<manifestEntries>
+							<Dependencies>deployment.dynamic-render-service-bundle-api-1.0.0-SNAPSHOT.jar</Dependencies>
+						</manifestEntries>
+					</archive>
 				</configuration>
 			</plugin>
 			<!-- The WildFly plugin deploys your war to a local WildFly container -->
