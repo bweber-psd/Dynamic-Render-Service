@@ -1,5 +1,8 @@
 package com.perceptivesoftware.renderservice.rs.resource;
 
+import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.Path;
+
 import com.perceptivesoftware.renderservice.configuration.ConfigurationDefaults;
 import com.perceptivesoftware.renderservice.configuration.ConfigurationKeys;
 import com.perceptivesoftware.renderservice.configuration.RenderServiceConfiguration;
@@ -9,6 +12,8 @@ import com.saperion.connector.formats.TargetFormatType;
 /**
  * Abstract superclass for all resources. Contains common methods and constants.
  */
+@Path("/rendition")
+@RequestScoped
 public abstract class AbstractResource {
 
 	protected static final String WIDTH_PARAM = "width";

@@ -14,6 +14,7 @@ import org.osgi.framework.ServiceReference;
 
 import com.psd.rendering.drs.osgi.api.RenderService;
 import com.psd.rendering.drs.osgi.api.RenderServiceTracker;
+import com.saperion.connector.render.engine.RenderEngine;
 
 @Stateless
 public class BundleManager {
@@ -50,6 +51,8 @@ public class BundleManager {
 	public RenderService getRenderService() {
 		ServiceReference<RenderServiceTracker> serviceReference = (ServiceReference<RenderServiceTracker>) context.getServiceReference(RenderServiceTracker.class.getName());
 		Object obj = context.getService(serviceReference);
+		RenderService renderService = context.getService(serviceReference).getService(null);
+		RenderEngine renderEngine = renderService.getRenderEngine();
 		return context.getService(serviceReference).getService(null);
 	//	RenderServiceTracker serviceTracker = (RenderServiceTracker) context.getService(serviceReference).getService(null);
 	//	return serviceTracker.getService(null);

@@ -32,4 +32,9 @@ public final class InputStreamDescriptorCreator {
 		return new InputStreamDescriptor(stream, new URL("file", null,
 				contentDisposition.getFileName()));
 	}
+	
+	public static InputStreamDescriptor fromParameters(InputStream stream, String fileName) throws MalformedURLException {
+		return new InputStreamDescriptor(stream, new URL("file", null, fileName));
+	}
+	
 }

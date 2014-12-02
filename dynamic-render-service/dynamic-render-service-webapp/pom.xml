@@ -33,8 +33,9 @@
 		<!-- maven-compiler-plugin -->
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.source>1.7</maven.compiler.source>
-	</properties>
 
+		<saperion.common.version>1.4.0-SNAPSHOT</saperion.common.version>
+	</properties>
 
 	<dependencyManagement>
 		<dependencies>
@@ -110,6 +111,19 @@
 
 		<!-- Now we declare any tools needed -->
 
+		<!-- jersey media multipart for file upload -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-multipart</artifactId>
+			<version>2.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- Needed for running tests (you may also use TestNG) -->
 		<dependency>
@@ -134,12 +148,71 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+			<version>3.0.4.Final</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-multipart-provider</artifactId>
+			<version>3.0.4.Final</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
 			<scope>provided</scope>
 			<version>4.3.1</version>
 		</dependency>
 
+		<!-- Saperion -->
+		<dependency>
+			<groupId>com.saperion.common.lang</groupId>
+			<artifactId>saperion-common-lang</artifactId>
+			<version>${saperion.common.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.saperion.common.config</groupId>
+			<artifactId>saperion-common-config</artifactId>
+			<version>${saperion.common.version}</version>
+		</dependency>
+
+		<!-- <dependency>
+			<groupId>com.saperion.rendering</groupId>
+			<artifactId>render-engines-external</artifactId>
+			<version>2.2.0-SNAPSHOT</version>
+		</dependency> -->
+		<dependency>
+			<groupId>com.saperion.cache</groupId>
+			<artifactId>sacache</artifactId>
+			<version>2.2.1-SNAPSHOT</version>
+		</dependency>
+
+		<!-- Logging -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+		</dependency>
+
+		<!-- AspectJ -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+
+		<!-- Tests -->
+		<dependency>
+			<groupId>com.googlecode.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>1.5</version>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- <dependency> <groupId>com.psd.rendering.drs</groupId> <version>1.0.0-SNAPSHOT</version> 
 			<artifactId>dynamic-render-service-bundle-consumer</artifactId> </dependency> -->

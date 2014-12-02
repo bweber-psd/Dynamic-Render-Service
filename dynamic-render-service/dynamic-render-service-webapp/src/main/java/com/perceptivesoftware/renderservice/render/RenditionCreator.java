@@ -22,6 +22,7 @@ import com.perceptivesoftware.renderservice.configuration.RenderServiceConfigura
 import com.perceptivesoftware.renderservice.exception.ContentTooLargeException;
 import com.perceptivesoftware.renderservice.exception.TooManyRenditionsException;
 import com.perceptivesoftware.renderservice.options.RenderOptions;
+import com.psd.drs.service.BundleManager;
 import com.saperion.cache.FileCache;
 import com.saperion.cache.exception.CacheException;
 import com.saperion.cache.exception.CorruptElementException;
@@ -66,15 +67,18 @@ public final class RenditionCreator {
 	private int receiveSize;
 	private int receiveSizeBytes;
 
+	private BundleManager bundleManager;
+
 	/**
 	 * @param input
 	 * 		content to render
 	 * @param options
 	 * 		options for render-engine
 	 */
-	public RenditionCreator(InputStreamDescriptor input, RenderOptions options) {
+	public RenditionCreator(InputStreamDescriptor input, RenderOptions options, BundleManager bundleManager) {
 		this.input = input;
 		this.options = options;
+		this.bundleManager = bundleManager;
 		try {
 			digest = MessageDigest.getInstance("SHA-256");
 		} catch (NoSuchAlgorithmException e) {
@@ -129,7 +133,7 @@ public final class RenditionCreator {
 				return fromCache;
 			}
 
-			RenderJob job = new RenderJob(input, options);
+			RenderJob job = new RenderJob(input, options, bundleManager);
 			Future<List<Rendition>> future = RenderThreadPool.submitJob(job);
 
 			try {

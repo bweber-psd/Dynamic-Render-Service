@@ -30,21 +30,22 @@ public final class TargetFormatCreator {
 	 * 		when no render engine is available
 	 */
 	public static TargetFormat fromString(String format) throws NoRenderEngineException {
-		RenderEngine engine = EngineLoader.load();
-
-		if (engine == null) {
-			throw new NoRenderEngineException();
-		}
-
-		Set<TargetFormat> supportedTargetFormats = engine.getSupportedTargetFormats();
-
-		for (TargetFormat targetFormat : supportedTargetFormats) {
-			if (targetFormat.getExtension().equalsIgnoreCase(format)) {
-				return targetFormat;
-			}
-		}
-
-		throw new BadRequestException("Target format " + format + " not supported.");
+		return new TargetFormat("pdf", null, "pdf");
+//		RenderEngine engine = EngineLoader.load();
+//
+//		if (engine == null) {
+//			throw new NoRenderEngineException();
+//		}
+//
+//		Set<TargetFormat> supportedTargetFormats = engine.getSupportedTargetFormats();
+//
+//		for (TargetFormat targetFormat : supportedTargetFormats) {
+//			if (targetFormat.getExtension().equalsIgnoreCase(format)) {
+//				return targetFormat;
+//			}
+//		}
+//
+//		throw new BadRequestException("Target format " + format + " not supported.");
 	}
 
 }

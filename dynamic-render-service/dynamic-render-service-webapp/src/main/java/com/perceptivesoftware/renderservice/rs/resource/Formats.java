@@ -3,6 +3,7 @@ package com.perceptivesoftware.renderservice.rs.resource;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -10,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 import com.perceptivesoftware.renderservice.annotation.TraceLog;
 import com.perceptivesoftware.renderservice.render.EngineLoader;
+import com.psd.drs.service.BundleManager;
 import com.saperion.connector.formats.SourceFormat;
 import com.saperion.connector.formats.TargetFormat;
 import com.saperion.connector.formats.serializable.SerializableSourceFormat;
@@ -22,6 +24,9 @@ import com.saperion.connector.render.engine.RenderEngine;
 @Path("formats")
 public class Formats {
 
+	@Inject
+	static BundleManager bundleManager;
+	
 	/**
 	 * @return the supported source-formats of the underliying render-engine
 	 */
@@ -30,7 +35,7 @@ public class Formats {
 	@Produces(MediaType.APPLICATION_JSON)
 	@TraceLog
 	public SerializableSourceFormat[] getSourceFormats() {
-		RenderEngine engine = EngineLoader.load();
+		RenderEngine engine = EngineLoader.load(bundleManager);
 
 		Set<SourceFormat> supportedSourceFormats = engine.getSupportedSourceFormats();
 		Set<SerializableSourceFormat> result = new HashSet<SerializableSourceFormat>();
@@ -50,7 +55,7 @@ public class Formats {
 	@Produces(MediaType.APPLICATION_JSON)
 	@TraceLog
 	public SerializableTargetFormat[] getTargetFormats() {
-		RenderEngine engine = EngineLoader.load();
+		RenderEngine engine = EngineLoader.load(bundleManager);
 
 		Set<TargetFormat> supportedTargetFormats = engine.getSupportedTargetFormats();
 		Set<SerializableTargetFormat> result = new HashSet<SerializableTargetFormat>();

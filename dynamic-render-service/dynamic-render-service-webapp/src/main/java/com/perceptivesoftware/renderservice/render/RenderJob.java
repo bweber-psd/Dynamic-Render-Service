@@ -8,6 +8,8 @@ import com.perceptivesoftware.renderservice.annotation.TraceLog;
 import com.perceptivesoftware.renderservice.exception.NoRenderEngineException;
 import com.perceptivesoftware.renderservice.options.OptionsCreator;
 import com.perceptivesoftware.renderservice.options.RenderOptions;
+import com.psd.drs.service.BundleManager;
+import com.psd.rendering.drs.osgi.api.RenderService;
 import com.saperion.common.io.InputStreamDescriptor;
 import com.saperion.common.logging.Logger;
 import com.saperion.connector.options.Options;
@@ -33,10 +35,11 @@ public class RenderJob implements Callable<List<Rendition>> {
 	 * @param options
 	 * 		rendering options
 	 */
-	public RenderJob(InputStreamDescriptor input, RenderOptions options) {
+	public RenderJob(InputStreamDescriptor input, RenderOptions options, BundleManager bundleManager) {
 		this.input = input;
 		this.options = options;
-		this.engine = EngineLoader.load();
+		RenderService renderService = bundleManager.getRenderService();
+		this.engine = renderService.getRenderEngine();
 	}
 
 	@Override

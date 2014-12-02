@@ -19,6 +19,7 @@ package com.psd.drs.rest;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+
 /**
  * A class extending {@link Application} and annotated with @ApplicationPath is the Java EE 6 "no XML" approach to activating
  * JAX-RS.
@@ -30,4 +31,12 @@ import javax.ws.rs.core.Application;
 @ApplicationPath("/rest")
 public class JaxRsActivator extends Application {
     /* class body intentionally left blank */
+	
+	/**
+	 * Registers REST resources and additional features.
+	 */
+	public JaxRsActivator() {
+//		packages("com.perceptivesoftware.renderservice.rs");
+//		register(MultiPartFeature.class);
+	}
 }

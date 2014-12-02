@@ -20,6 +20,18 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>dynamic-render-service-bundle-service</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>dynamic-render-service-bundle-consumer</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<!-- Pax Exam Dependencies -->
 		<dependency>
 			<groupId>org.ops4j.pax.exam</groupId>
@@ -59,9 +71,20 @@
 		<!-- For sane logging -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
-			<version>1.5.10</version>
-			<scope>test</scope>
+			<version>1.6.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
 		</dependency>
 	</dependencies>
 </project>

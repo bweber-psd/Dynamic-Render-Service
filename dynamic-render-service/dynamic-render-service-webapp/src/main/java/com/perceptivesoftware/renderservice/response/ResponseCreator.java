@@ -30,11 +30,13 @@ public final class ResponseCreator {
 	 * @param rendition
 	 * 		the rendition that will be contained in the response
 	 * @return response with rendition to stream and headers
+	 * @throws Exception 
 	 */
-	public static Response forRendition(Rendition rendition) {
+	public static Response forRendition(Rendition rendition, String fileName) throws Exception {
 		String mimetype = rendition.getTarget().getMimetype();
+		mimetype = "application/octet-stream";
 		return Response.ok().header(PAGE_HEADER, rendition.getPage())
-				.header(TARGET_HEADER, mimetype).type(mimetype)
+				.header(TARGET_HEADER, mimetype).header("content-disposition", "attachment; filename=\"" + fileName +"\"").type(mimetype)
 				.entity(new RenditionStreamingOutput(rendition)).build();
 	}
 }
