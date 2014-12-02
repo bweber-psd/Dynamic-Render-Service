@@ -10,10 +10,10 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>dynamic-render-service-bundle-api</module>
-		<module>dynamic-render-service-bundle-consumer</module>
-		<module>dynamic-render-service-bundle-service</module>
-		<module>dynamic-render-service-bundle-test</module>
+		<module>drs-bundle-api</module>
+		<module>drs-bundle-consumer</module>
+		<module>drs-bundle-service</module>
+		<module>drs-bundle-test</module>
 	</modules>
 
 	<properties>

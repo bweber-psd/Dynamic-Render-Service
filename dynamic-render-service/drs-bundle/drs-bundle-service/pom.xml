@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>dynamic-render-service-bundle-service-oo</module>
-		<module>dynamic-render-service-bundle-service-aspose</module>
+		<module>drs-bundle-service-oo</module>
+		<module>drs-bundle-service-aspose</module>
 	</modules>
 </project>
