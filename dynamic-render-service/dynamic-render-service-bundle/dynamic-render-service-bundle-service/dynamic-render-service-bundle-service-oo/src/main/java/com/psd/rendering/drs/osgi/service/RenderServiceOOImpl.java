@@ -5,9 +5,10 @@ import com.saperion.connector.render.engine.RenderEngine;
 import com.saperion.connector.renditions.aspose.AsposeRenderEngine;
 
 
-public class RenderServiceImpl implements RenderService {
+public class RenderServiceOOImpl implements RenderService {
     @Override
     public String render(String arg) {
+    	System.out.println("Open Office Render Service received " + arg);
         return new StringBuilder(arg).reverse().toString();
     }
 

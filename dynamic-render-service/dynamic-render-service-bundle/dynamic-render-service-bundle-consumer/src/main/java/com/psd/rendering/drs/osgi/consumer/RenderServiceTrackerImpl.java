@@ -28,4 +28,9 @@ public class RenderServiceTrackerImpl implements RenderServiceTracker {
 		return serviceList.get(0);
 	}
 
+	@Override
+	public int getServiceCount() {
+		return serviceList.size();
+	}
+
 }

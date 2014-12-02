@@ -50,8 +50,10 @@ public class BundleManager {
 	
 	public RenderService getRenderService() {
 		ServiceReference<RenderServiceTracker> serviceReference = (ServiceReference<RenderServiceTracker>) context.getServiceReference(RenderServiceTracker.class.getName());
-		Object obj = context.getService(serviceReference);
+		RenderServiceTracker renderServiceTracker = context.getService(serviceReference);
 		RenderService renderService = context.getService(serviceReference).getService(null);
+		System.out.println("Render Service Bundle count: " + renderServiceTracker.getServiceCount());
+		log.info("Render Service Bundle count: " + renderServiceTracker.getServiceCount());
 		RenderEngine renderEngine = renderService.getRenderEngine();
 		return context.getService(serviceReference).getService(null);
 	//	RenderServiceTracker serviceTracker = (RenderServiceTracker) context.getService(serviceReference).getService(null);

@@ -4,8 +4,6 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
-
 import com.saperion.common.io.InputStreamDescriptor;
 
 /**
@@ -27,11 +25,11 @@ public final class InputStreamDescriptorCreator {
 	 * @throws MalformedURLException
 	 * 		when the filename was not acceptable
 	 */
-	public static InputStreamDescriptor fromParameters(InputStream stream,
-			FormDataContentDisposition contentDisposition) throws MalformedURLException {
-		return new InputStreamDescriptor(stream, new URL("file", null,
-				contentDisposition.getFileName()));
-	}
+//	public static InputStreamDescriptor fromParameters(InputStream stream,
+//			FormDataContentDisposition contentDisposition) throws MalformedURLException {
+//		return new InputStreamDescriptor(stream, new URL("file", null,
+//				contentDisposition.getFileName()));
+//	}
 	
 	public static InputStreamDescriptor fromParameters(InputStream stream, String fileName) throws MalformedURLException {
 		return new InputStreamDescriptor(stream, new URL("file", null, fileName));

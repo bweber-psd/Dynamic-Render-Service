@@ -26,7 +26,7 @@ public class RenderServiceBundleTestCase {
     public Option[] config() {
         return CoreOptions.options(
                 CoreOptions.mavenBundle("com.psd.rendering.drs", "dynamic-render-service-bundle-api"),
-                CoreOptions.mavenBundle("com.psd.rendering.drs", "dynamic-render-service-bundle-service"),
+                CoreOptions.mavenBundle("com.psd.rendering.drs", "dynamic-render-service-bundle-service-aspose"),
                 CoreOptions.mavenBundle("com.psd.rendering.drs", "dynamic-render-service-bundle-consumer"),
                 CoreOptions.junitBundles());
     }
